@@ -1,17 +1,27 @@
-# Utility robot_upstart
+# `xbot_ros` Package
 
-## Usage example
+This package provides a ROS 2 node called `robot_description_publisher` that reads a robot's URDF and optional SRDF files and publishes them on corresponding ROS 2 topics.
 
-For the automatic roscore starting:
-
-```
-rosrun robot_upstart install --job roscore --setup $XBOT_ROOT/robotology-setup.bash xbot_ros/launch/upstart.launch --master $ROS_MASTER_URI
-
-sudo systemctl daemon-reload && sudo systemctl start roscore
-```
+---
 
 
+## Node: `robot_description_publisher`
 
-```
-rosrun robot_upstart install --job robot_state_logger --setup $ROBOTOLOGY_ROOT/robotology-setup.bash xbot_ros/launch/robot_state_logger.launch --master $ROS_MASTER_URI
+### Purpose
+The `robot_description_publisher` node:
+- Publishes the URDF robot description on the topic `/robot_description`.
+- Publishes the SRDF semantic robot description on the topic `/robot_description_semantic`.
+
+---
+
+
+
+## How to Run the Node
+
+Run the node using the `ros2 run` command and provide the required parameters for the robot descriptions:
+```bash
+    ros2 run xbot_ros robot_description_publisher \
+    --ros-args \
+    -p robot_description:="path/to/your_robot.urdf)" \
+    -p robot_description_semantic:="path/to/your_robot.srdf"
 ```
