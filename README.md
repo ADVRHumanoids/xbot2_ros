@@ -22,6 +22,6 @@ Run the node using the `ros2 run` command and provide the required parameters fo
 ```bash
     ros2 run xbot_ros robot_description_publisher \
     --ros-args \
-    -p robot_description:="path/to/your_robot.urdf)" \
+    -p robot_description:="path/to/your_robot.urdf" \
     -p robot_description_semantic:="path/to/your_robot.srdf"
 ```
