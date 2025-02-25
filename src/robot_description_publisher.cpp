@@ -20,6 +20,8 @@ int main(int argc, char **argv)
 
     string_msg.data = urdf;
 
+    RCLCPP_INFO(node->get_logger(), "Publishing URDF to topic %s", urdf_pub->get_topic_name());
+
     urdf_pub->publish(string_msg);
 
     auto srdf_pub = urdf_pub;
@@ -31,6 +33,8 @@ int main(int argc, char **argv)
             rclcpp::QoS(1).transient_local());
 
         string_msg.data = srdf;
+
+        RCLCPP_INFO(node->get_logger(), "Publishing SRDF to topic %s", srdf_pub->get_topic_name());
 
         srdf_pub->publish(string_msg);
     }
